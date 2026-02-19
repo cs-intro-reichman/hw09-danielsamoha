@@ -37,6 +37,13 @@ public class LanguageModel {
         char c;
 
         In in = new In(fileName);
+
+        for (int i = 0; i < windowLength; i++){
+            if (in.isEmpty()) return;
+
+            window += in.readChar();
+        }
+
         while (!in.isEmpty()) {
             c = in.readChar();
             List probs = CharDataMap.get(window);
